@@ -27,22 +27,16 @@ function countWarnings(timeline: buildIf.Timeline) {
     
     timeline.records.filter(record => {
         return taskFilters.some(exp => {
-            return exp.test(record.name)
-        })
+            return exp.test(record.name);
+        });
     }).forEach(record => {
-        warnings += record.warningCount
+        warnings += record.warningCount;
     });
     
     return warnings;
 }
 
 var failOnThreshold = tl.getInput('failOption', true) == 'fixed';
-
-var maxWarnings = 0;
-if (failOnThreshold) {
-    maxWarnings = Number(tl.getInput('warningThreshold', true));
-}
-
 var taskFilters = tl.getDelimitedInput('taskFilters', '\n').map(filter => {
     return new RegExp(filter);
 });
@@ -69,8 +63,10 @@ buildClient.getBuildTimeline(project, definitionId)
             }
         })
     } else {
+        var maxWarnings = Number(tl.getInput('warningThreshold', true));
         if (currentWarnings > maxWarnings) {
             tl.setResult(tl.TaskResult.Failed, 'The number of warnings (' + currentWarnings + ') exceeds threshold (' + maxWarnings + ')!');
         }
     }
 })
+.done();

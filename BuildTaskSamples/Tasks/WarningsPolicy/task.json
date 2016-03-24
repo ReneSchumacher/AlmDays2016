@@ -4,7 +4,7 @@
   "friendlyName": "Build Warnings Policy",
   "description": "Breaks a build based on the overall number or trend of warnings.",
   "author": "Microsoft PSfD Germany",
-  "helpMarkDown": "TODO: Add help text and link to description!",
+  "helpMarkDown": "[More information]()",
   "category": "Build",
   "visibility": [
     "Build",
@@ -17,7 +17,7 @@
     "Patch": "0"
   },
   "minimumAgentVersion": "1.83.0",
-  "instanceNameFormat": "Fail WarningsPolicy",
+  "instanceNameFormat": "Build Warnings Policy",
   "groups": [
       {
           "name": "advanced",
