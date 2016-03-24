@@ -1,0 +1,33 @@
+{
+  "name": "ms.psfd.build.tasks",
+  "version": "0.1.0",
+  "description": "Tasks for Team Foundation Build (vNext)",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "TFS",
+    "VSTS",
+    "build",
+    "tasks"
+  ],
+  "author": "Microsoft PSfD Germany",
+  "license": "MIT",
+  "dependencies": {
+    "q": "^1.4.1",
+    "vso-node-api": "^3.0.1",
+    "vsts-task-lib": "^0.6.0"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-tsc": "^1.1.5",
+    "map-stream": "0.0.6",
+    "node": "0.0.0",
+    "shelljs": "^0.6.0"
+  }
+}

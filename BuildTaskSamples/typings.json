@@ -1,0 +1,13 @@
+{
+  "name": "ms.psfd.build.tasks",
+  "version": false,
+  "dependencies": {},
+  "ambientDependencies": {
+    "glob": "registry:dt/glob#5.0.10+20160317120654",
+    "minimatch": "registry:dt/minimatch#2.0.8+20160317120654",
+    "node": "registry:dt/node#4.0.0+20160319033040",
+    "q": "registry:dt/q#0.0.0+20160317120654",
+    "shelljs": "registry:dt/shelljs#0.0.0+20160316155526",
+    "vso-node-api": "registry:dt/vso-node-api#0.3.2+20160316155526"
+  }
+}
