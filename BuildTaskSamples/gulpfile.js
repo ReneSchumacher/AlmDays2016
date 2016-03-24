@@ -31,20 +31,18 @@ gulp.task('restoreTypeDefs', ['cleanTypeDefs'], function(cb) {
     cb();
 });
 
-gulp.task('mergeTypeDefs', ['restoreTypeDefs'], function(cb) {
-    gulp.src('definitions/**/*.d.ts')
+gulp.task('mergeTypeDefs', ['restoreTypeDefs'], function() {
+    return gulp.src('definitions/**/*.d.ts')
         .pipe(map(updateMain))
         .pipe(gulp.dest('typings/main'));
-    cb();
 });
 
-gulp.task('compileTasks', ['cleanTaskOutputs', 'mergeTypeDefs'], function(cb) {
+gulp.task('compileTasks', ['cleanTaskOutputs', 'mergeTypeDefs'], function() {
     var tasksPath = path.join(__dirname, 'Tasks');
     
-    gulp.src(path.join(tasksPath, '**/*.ts'))
+    return gulp.src(path.join(tasksPath, '**/*.ts'))
         .pipe(tsc())
         .pipe(gulp.dest(tasksPath));
-    cb();    
 });
 
 gulp.task('compile', ['compileTasks']);
