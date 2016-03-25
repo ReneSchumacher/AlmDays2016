@@ -1,0 +1,18 @@
+{
+    "ms-resource:loc.friendlyName": "Build Warnings Policy",
+    "ms-resource:loc.description": "Breaks a build based on the overall number or trend of warnings.",
+    "ms-resource:loc.helperMarkDown": "[More information]()",
+    "ms-resource:loc.instanceNameFormat": "Build Warnings Policy",
+    "ms-resource:loc.group.displayName.advanced": "Advanced",
+    "ms-resource:loc.input.failOption.label": "Fail Build On",
+    "ms-resource:loc.input.failOption.help": "Fail build either if it exceeds a fixed number of warnings or the previous build's warning count.",
+    "ms-resource:loc.input.failOption.option.fixed": "Fixed Threshold",
+    "ms-resource:loc.input.failOption.option.build": "Previous Build",
+    "ms-resource:loc.input.warningThreshold.label": "Warning Threshold",
+    "ms-resource:loc.input.warningThreshold.help": "Specify the maximum number of warnings. The build will fail, if this number is exceeded.",
+    "ms-resource:loc.input.taskFilters.label": "Task Filters",
+    "ms-resource:loc.input.taskFilters.help": "Regular expressions (one per line) to include relevant warnings. [More information]()",
+    "ms-resource:loc.message.NoAuthAccess": "Unable to get OAuth token. Please ensure that tasks are allowed to access the OAuth token used by the build (see build options)!",
+    "ms-resource:loc.message.PrevBuildExceeded": "The number of warnings (%d) has increased since the previous build! The previous build had %d warnings.",
+    "ms-resource:loc.message.ThresholdExceeded": "The number of warnings (%d) exceeds threshold (%d)!"
+}

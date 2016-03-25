@@ -1,7 +1,7 @@
 /// <reference path="../../typings/main.d.ts" />
 
+import path = require('path');
 import tl = require('vsts-task-lib/task');
-import Q = require('q');
 import webapi = require('vso-node-api/WebApi');
 import buildIf = require('vso-node-api/interfaces/BuildInterfaces');
 import buildapi = require('vso-node-api/BuildApi');
@@ -36,6 +36,8 @@ function countWarnings(timeline: buildIf.Timeline) {
     return warnings;
 }
 
+tl.setResourcePath(path.join(__dirname, 'task.json'));
+
 var failOnThreshold = tl.getInput('failOption', true) == 'fixed';
 var taskFilters = tl.getDelimitedInput('taskFilters', '\n').map(filter => {
     return new RegExp(filter);
@@ -43,7 +45,7 @@ var taskFilters = tl.getDelimitedInput('taskFilters', '\n').map(filter => {
 
 var token = tl.getVariable('System.AccessToken');
 if (!token) {
-    tl.setResult(tl.TaskResult.Failed, 'Unable to get OAuth token. Please ensure that tasks are allowed to access the OAuth token used by the build (see build options)!');
+    tl.setResult(tl.TaskResult.Failed, tl.loc('NoOAuthAccess'));
 }
 
 var credHandler = webapi.getBearerHandler(token);
@@ -59,13 +61,13 @@ buildClient.getBuildTimeline(project, definitionId)
         .then(countWarnings)
         .then(function (lastWarnings) {
             if (lastWarnings >= 0 && currentWarnings > lastWarnings) {
-                tl.setResult(tl.TaskResult.Failed, 'The number of warnings (' + currentWarnings + ') has increased since the last build! The last build had ' + lastWarnings + ' warnings.');
+                tl.setResult(tl.TaskResult.Failed, tl.loc('PrevBuildExceeded', currentWarnings, lastWarnings));
             }
         })
     } else {
         var maxWarnings = Number(tl.getInput('warningThreshold', true));
         if (currentWarnings > maxWarnings) {
-            tl.setResult(tl.TaskResult.Failed, 'The number of warnings (' + currentWarnings + ') exceeds threshold (' + maxWarnings + ')!');
+            tl.setResult(tl.TaskResult.Failed, tl.loc('ThresholdExceeded', currentWarnings, maxWarnings));
         }
     }
 })

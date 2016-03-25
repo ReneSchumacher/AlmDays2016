@@ -62,5 +62,10 @@
       "target": "task.js",
       "argumentFormat": ""
     }
+  },
+  "messages": {
+      "NoOAuthAccess": "Unable to get OAuth token. Please ensure that tasks are allowed to access the OAuth token used by the build (see build options)!",
+      "PrevBuildExceeded": "The number of warnings (%d) has increased since the previous build! The previous build had %d warnings.",
+      "ThresholdExceeded": "The number of warnings (%d) exceeds threshold (%d)!"
   }
 }
