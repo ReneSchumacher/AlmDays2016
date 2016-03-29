@@ -21,14 +21,15 @@ function getLastBuildTimelineByDefId(project: string, definitionId: number) {
 function countWarnings(timeline: buildIf.Timeline) {
     var warnings = 0;
     
-    if (!timeline) {
+    if (!timeline || !timeline.records) {
         return -1;
     }
     
+    // If no task filters are configured, include all timelines
     timeline.records.filter(record => {
-        return taskFilters.some(exp => {
+        return taskFilters.length ? taskFilters.some(exp => {
             return exp.test(record.name);
-        });
+        }) : true;
     }).forEach(record => {
         warnings += record.warningCount;
     });
