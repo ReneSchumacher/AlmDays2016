@@ -74,7 +74,7 @@
   },
   "messages": {
       "NoOAuthAccess": "Unable to get OAuth token. Please ensure that tasks are allowed to access the OAuth token used by the build (see build options)!",
-      "PrevBuildExceeded": "The number of warnings (%d) has increased since the previous build! The previous build had %d warnings.",
+      "PrevBuildExceeded": "The number of warnings (%d) has increased since the previous build! The previous build had %d warning(s).",
       "ThresholdExceeded": "The number of warnings (%d) exceeds threshold (%d)!",
       "NoMatchingFilter": "The specified task filters did not match any build task."
   }

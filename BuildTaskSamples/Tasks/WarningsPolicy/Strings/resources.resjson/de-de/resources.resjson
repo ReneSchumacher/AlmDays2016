@@ -15,7 +15,7 @@
   "loc.input.label.taskFilters": "Task Filter",
   "loc.input.help.taskFilters": "Reguläre Ausdrücke (einer pro Zeile), über die relevanten Warnungen herausgefiltert werden. [Mehr Informationen]()",
   "loc.message.NoOAuthAccess": "OAuth-Token nicht verfügbar. Bitte stellen Sie sicher, dass Build-Tasks Zugriff auf das OAuth-Token des Build-Vorgangs haben (siehe Build-Optionen)!",
-  "loc.message.PrevBuildExceeded": "Die Zahl der Warnungen (%d) ist seit dem letzten Build gestiegen! Der vorherige Build hatte %d Warnungen.",
+  "loc.message.PrevBuildExceeded": "Die Zahl der Warnungen (%d) ist seit dem letzten Build gestiegen! Der vorherige Build hatte %d Warnung(en).",
   "loc.message.ThresholdExceeded": "Die Zahl der Warnungen (%d) übersteigt den Schwellwert (%d)!",
   "loc.message.NoMatchingFilter": "Zu den angegebenen Task Filtern wurde kein passender Build Task gefunden."
 }
