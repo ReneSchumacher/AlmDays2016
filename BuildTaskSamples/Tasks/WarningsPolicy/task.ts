@@ -8,7 +8,7 @@ import buildapi = require('vso-node-api/BuildApi');
 
 function getLastBuildTimelineByDefId(project: string, definitionId: number) {
     var resultFilter = buildIf.BuildResult.Succeeded | buildIf.BuildResult.PartiallySucceeded;
-    if (tl.getBoolInput('succeededBuildsOnly')) {
+    if (!tl.getBoolInput('succeededBuildsOnly')) {
         resultFilter |= buildIf.BuildResult.Failed;
     }
     return buildClient.getBuilds(project, [definitionId], null, null, null, null, null, null,
