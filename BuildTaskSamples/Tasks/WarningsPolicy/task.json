@@ -13,7 +13,7 @@
   "demands": [],
   "version": {
     "Major": "0",
-    "Minor": "1",
+    "Minor": "2",
     "Patch": "0"
   },
   "minimumAgentVersion": "1.83.0",
@@ -28,7 +28,7 @@
   "inputs": [
     {
       "name": "failOption",
-      "type": "option",
+      "type": "radio",
       "label": "Fail Build On",
       "defaultValue": "fixed",
       "required": true,
@@ -48,10 +48,19 @@
       "visibleRule": "failOption = fixed"
     },
     {
+      "name": "succeededBuildsOnly",
+      "type": "boolean",
+      "label": "Only Succeeded Builds",
+      "defaultValue": true,
+      "required": false,
+      "helpMarkDown": "If checked, the number of warnings is compared against the last successful build. Uncheck, if you want to compare to the previous build regardless of its result (not recommended).",
+      "visibleRule": "failOption = build"
+    },
+    {
         "name": "taskFilters",
         "type": "multiLine",
         "label": "Task Filters",
-        "defaultValue" : "/(build|ant|maven|)/i",
+        "defaultValue" : "/(build|ant|maven)/i",
         "required": false,
         "helpMarkDown": "Regular expressions (one per line) to include relevant warnings. [More information]()",
         "groupName": "advanced"
@@ -66,6 +75,7 @@
   "messages": {
       "NoOAuthAccess": "Unable to get OAuth token. Please ensure that tasks are allowed to access the OAuth token used by the build (see build options)!",
       "PrevBuildExceeded": "The number of warnings (%d) has increased since the previous build! The previous build had %d warnings.",
-      "ThresholdExceeded": "The number of warnings (%d) exceeds threshold (%d)!"
+      "ThresholdExceeded": "The number of warnings (%d) exceeds threshold (%d)!",
+      "NoMatchingFilter": "The specified task filters did not match any build task."
   }
 }

@@ -11,6 +11,7 @@ var del = require('del');
 var shell = require('shelljs');
 var path = require('path');
 var cp = require('child_process');
+var pkgm = require('./package');
 
 var NPM_MIN_VER = '3.0.0';
 var MIN_NODE_VER = '4.0.0';
@@ -85,8 +86,11 @@ gulp.task('compileTasks', ['clean', 'init'], function() {
 
 gulp.task('compile', ['compileTasks']);
 
-gulp.task('build', ['compile'], function(cb) {
-    // TODO: add build logic
+gulp.task('build', ['compileTasks'], function(cb) {
+    // Layout the tasks.
+    shell.mkdir('-p', _buildRoot);
+    return gulp.src(path.join(__dirname, 'Tasks', '**/task.json'))
+        .pipe(pkgm.PackageTask(_buildRoot));
 });
 
 gulp.task('default', ['build']);

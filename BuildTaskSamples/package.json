@@ -32,6 +32,8 @@
     "map-stream": "0.0.6",
     "node": "0.0.0",
     "semver": "^5.1.0",
-    "shelljs": "^0.6.0"
+    "shelljs": "^0.6.0",
+    "through2": "^2.0.1",
+    "validator": "^5.2.0"
   }
 }
