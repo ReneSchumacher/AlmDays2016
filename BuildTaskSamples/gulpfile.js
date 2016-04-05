@@ -25,7 +25,8 @@ shell.config.silent = true;
 
 var _initFile = path.join(__dirname, 'init.done');
 var _tempPath = path.join(__dirname, '_temp');
-var _buildRoot = path.join(__dirname, '_build', 'Tasks');
+var _buildRoot = path.join(__dirname, '_build');
+var _buildTaskRoot = path.join(_buildRoot, 'Tasks');
 
 gulp.task('cleanTypeDefs', function() {
     return del(['typings']);
@@ -34,13 +35,15 @@ gulp.task('cleanTypeDefs', function() {
 gulp.task('clean', function() {
     return del([
         'Tasks/**/*.js',
-        _buildRoot
+        _buildTaskRoot
     ]);
 });
 
 gulp.task('cleanAll', ['clean', 'cleanTypeDefs'], function() {
     return del([
         'Tasks/**/node_modules',
+        _buildRoot,
+        _tempPath,
         _initFile
     ]);
 });
@@ -88,9 +91,9 @@ gulp.task('compile', ['compileTasks']);
 
 gulp.task('build', ['compileTasks'], function(cb) {
     // Layout the tasks.
-    shell.mkdir('-p', _buildRoot);
+    shell.mkdir('-p', _buildTaskRoot);
     return gulp.src(path.join(__dirname, 'Tasks', '**/task.json'))
-        .pipe(pkgm.PackageTask(_buildRoot));
+        .pipe(pkgm.PackageTask(_buildTaskRoot));
 });
 
 gulp.task('default', ['build']);
