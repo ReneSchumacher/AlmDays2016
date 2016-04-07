@@ -13,7 +13,7 @@
   "demands": [],
   "version": {
     "Major": "0",
-    "Minor": "2",
+    "Minor": "3",
     "Patch": "0"
   },
   "minimumAgentVersion": "1.83.0",
@@ -57,12 +57,21 @@
       "visibleRule": "failOption = build"
     },
     {
+      "name": "forceFewerWarnings",
+      "type": "boolean",
+      "label": "Force Fewer Warnings",
+      "defaultValue": false,
+      "required": false,
+      "helpMarkDown": "If checked, the build will fail, if the number of warnings has not decreased since the last build.",
+      "visibleRule": "failOption = build"
+    },
+    {
         "name": "taskFilters",
         "type": "multiLine",
         "label": "Task Filters",
         "defaultValue" : "/(build|ant|maven)/i",
         "required": false,
-        "helpMarkDown": "Regular expressions (one per line) to include relevant warnings. [More information]()",
+        "helpMarkDown": "Regular expressions (one per line) to include relevant warnings.",
         "groupName": "advanced"
     }
   ],
@@ -75,6 +84,7 @@
   "messages": {
       "NoOAuthAccess": "Unable to get OAuth token. Please ensure that tasks are allowed to access the OAuth token used by the build (see build options)!",
       "PrevBuildExceeded": "The number of warnings (%d) has increased since the previous build! The previous build had %d warning(s).",
+      "NotFewerWarnings": "The number of warnings (%d) has not decreased since the previous build! The previous build had %d warning(s).",
       "ThresholdExceeded": "The number of warnings (%d) exceeds threshold (%d)!",
       "NoMatchingFilter": "The specified task filters did not match any build task.",
       "InvalidRegEx": "The expression '%s' is not a valid regular expression and will be ignored."

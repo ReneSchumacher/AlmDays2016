@@ -68,7 +68,6 @@ tl.debug(taskFilters.toString());
 
 var token = tl.getVariable('System.AccessToken');
 if (!token) {
-    tl.error(tl.loc('NoOAuthAccess'));
     tl.setResult(tl.TaskResult.Failed, tl.loc('NoOAuthAccess'));
 }
 
@@ -86,15 +85,18 @@ buildClient.getBuildTimeline(project, buildId)
         getLastBuildTimelineByDefId(project, definitionId)
         .then(countWarnings)
         .then(function (lastWarnings) {
-            if (lastWarnings >= 0 && currentWarnings > lastWarnings) {
-                tl.error(tl.loc('PrevBuildExceeded', currentWarnings, lastWarnings));
-                tl.setResult(tl.TaskResult.Failed, tl.loc('PrevBuildExceeded', currentWarnings, lastWarnings));
+            var forceFewer = tl.getBoolInput('forceFewerWarnings');
+            if (lastWarnings >= 0) {
+                if (currentWarnings > lastWarnings) {
+                    tl.setResult(tl.TaskResult.Failed, tl.loc('PrevBuildExceeded', currentWarnings, lastWarnings));
+                } else if (forceFewer && lastWarnings > 0 && currentWarnings == lastWarnings) {
+                    tl.setResult(tl.TaskResult.Failed, tl.loc('NotFewerWarnings', currentWarnings, lastWarnings));
+                }
             }
         })
     } else {
         var maxWarnings = Number(tl.getInput('warningThreshold', true));
         if (currentWarnings > maxWarnings) {
-            tl.error(tl.loc('ThresholdExceeded', currentWarnings, maxWarnings));
             tl.setResult(tl.TaskResult.Failed, tl.loc('ThresholdExceeded', currentWarnings, maxWarnings));
         }
     }

@@ -13,7 +13,7 @@
   "demands": [],
   "version": {
     "Major": "0",
-    "Minor": "2",
+    "Minor": "3",
     "Patch": "0"
   },
   "minimumAgentVersion": "1.83.0",
@@ -57,6 +57,15 @@
       "visibleRule": "failOption = build"
     },
     {
+      "name": "forceFewerWarnings",
+      "type": "boolean",
+      "label": "ms-resource:loc.input.label.forceFewerWarnings",
+      "defaultValue": false,
+      "required": false,
+      "helpMarkDown": "ms-resource:loc.input.help.forceFewerWarnings",
+      "visibleRule": "failOption = build"
+    },
+    {
       "name": "taskFilters",
       "type": "multiLine",
       "label": "ms-resource:loc.input.label.taskFilters",
@@ -75,6 +84,7 @@
   "messages": {
     "NoOAuthAccess": "ms-resource:loc.message.NoOAuthAccess",
     "PrevBuildExceeded": "ms-resource:loc.message.PrevBuildExceeded",
+    "NotFewerWarnings": "ms-resource:loc.message.NotFewerWarnings",
     "ThresholdExceeded": "ms-resource:loc.message.ThresholdExceeded",
     "NoMatchingFilter": "ms-resource:loc.message.NoMatchingFilter",
     "InvalidRegEx": "ms-resource:loc.message.InvalidRegEx"
