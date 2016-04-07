@@ -76,6 +76,7 @@
     "NoOAuthAccess": "ms-resource:loc.message.NoOAuthAccess",
     "PrevBuildExceeded": "ms-resource:loc.message.PrevBuildExceeded",
     "ThresholdExceeded": "ms-resource:loc.message.ThresholdExceeded",
-    "NoMatchingFilter": "ms-resource:loc.message.NoMatchingFilter"
+    "NoMatchingFilter": "ms-resource:loc.message.NoMatchingFilter",
+    "InvalidRegEx": "ms-resource:loc.message.InvalidRegEx"
   }
 }

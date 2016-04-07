@@ -15,7 +15,8 @@
   "loc.input.label.taskFilters": "Task Filters",
   "loc.input.help.taskFilters": "Regular expressions (one per line) to include relevant warnings. [More information]()",
   "loc.message.NoOAuthAccess": "Unable to get OAuth token. Please ensure that tasks are allowed to access the OAuth token used by the build (see build options)!",
-  "loc.message.PrevBuildExceeded": "The number of warnings (%d) has increased since the previous build! The previous build had %d warnings.",
+  "loc.message.PrevBuildExceeded": "The number of warnings (%d) has increased since the previous build! The previous build had %d warning(s).",
   "loc.message.ThresholdExceeded": "The number of warnings (%d) exceeds threshold (%d)!",
-  "loc.message.NoMatchingFilter": "The specified task filters did not match any build task."
+  "loc.message.NoMatchingFilter": "The specified task filters did not match any build task.",
+  "loc.message.InvalidRegEx": "The expression '%s' is not a valid regular expression and will be ignored."
 }

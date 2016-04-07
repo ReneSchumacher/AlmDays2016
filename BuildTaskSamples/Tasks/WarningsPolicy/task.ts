@@ -33,7 +33,7 @@ function countWarnings(timeline: buildIf.Timeline) {
     // If no task filters are configured, include all timelines
     var relevantRecords = timeline.records.filter(record => {
         return taskFilters.length ? taskFilters.some(exp => {
-            return exp.test(record.name);
+            return exp ? exp.test(record.name) : false;
         }) : true;
     });
     tl.debug('Counting warnings from tasks:');
@@ -55,7 +55,14 @@ tl.setResourcePath(path.join(__dirname, 'task.json'));
 var failOnThreshold = tl.getInput('failOption', true) == 'fixed';
 var taskFilters = tl.getDelimitedInput('taskFilters', '\n').map(filter => {
     var regexTokens = filter.substring(1).split(filter[0]);
-    return new RegExp(regexTokens[0], regexTokens[1]);
+    try {
+        var reg = new RegExp(regexTokens[0], regexTokens[1]);
+        return reg;
+    }
+    catch (ex) {
+        tl.warning(tl.loc('InvalidRegEx', filter));
+        return null;
+    }
 });
 tl.debug(taskFilters.toString());
 

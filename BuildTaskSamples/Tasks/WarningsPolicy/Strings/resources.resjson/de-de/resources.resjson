@@ -17,5 +17,6 @@
   "loc.message.NoOAuthAccess": "OAuth-Token nicht verfügbar. Bitte stellen Sie sicher, dass Build-Tasks Zugriff auf das OAuth-Token des Build-Vorgangs haben (siehe Build-Optionen)!",
   "loc.message.PrevBuildExceeded": "Die Zahl der Warnungen (%d) ist seit dem letzten Build gestiegen! Der vorherige Build hatte %d Warnung(en).",
   "loc.message.ThresholdExceeded": "Die Zahl der Warnungen (%d) übersteigt den Schwellwert (%d)!",
-  "loc.message.NoMatchingFilter": "Zu den angegebenen Task Filtern wurde kein passender Build Task gefunden."
+  "loc.message.NoMatchingFilter": "Zu den angegebenen Task Filtern wurde kein passender Build Task gefunden.",
+  "loc.message.InvalidRegEx": "Der Wert '%s' ist kein güliter regulärer Ausdruck und wird ignoriert."
 }
