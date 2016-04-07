@@ -43,5 +43,5 @@ Build haben soll.
 von regulären Ausdrücken (einer pro Zeile). Die Policy berücksichtigt nur Tasks, auf die einer der Filter passt. Die Filter werden
 auf den Namen der Timeline eines Tasks angewendet; dieser wird in der Build-Definition unterhalb des Task-Namens angezeigt. Der
 Standardwert `/(build|ant|maven)/i` berücksichtig bereits die meisten der Standard-Build-Tasks in TFS/VSTS.
-Klicken Sie [hier](developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), um mehr über reguläre Ausdrücke
+Klicken Sie [hier](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions), um mehr über reguläre Ausdrücke
 zu erfahren.

@@ -37,4 +37,4 @@ warnings, *Build Warnings Policy* needs to know, which tasks it should look at a
 a list of regular expressions (one per line). The policy will only look at build tasks that match one of the task filters. The
 matching is done by looking at the timeline name of each task, which is displayed below the task name in the build definition. The
 default value `/(build|ant|maven)/i` matches most of the standard build tasks in TFS/VSTS.
-Click [here](developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) for more information about regular expressions. 
+Click [here](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) for more information about regular expressions. 
