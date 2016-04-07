@@ -154,7 +154,36 @@ var createStrings = function(task, pkgPath, srcPath) {
 	return defer.promise;
 };
 
-function packageTask(pkgPath){
+function packageDocs(docPath) {
+    return through.obj(
+        function(docFile, encoding, done) {
+            // docFile is one of the following:
+            //   - .../TaskName/someFile.md
+            //   - .../TaskName/docs/someFile.md
+            //   - .../TaskName/docs/lang/someFile.md
+            //
+            // Output should be one of the following:
+            //   - docPath/TaskName/someFile.md
+            //   - docPath/TaskName/lang/someFile.md
+            var file = path.basename(docFile.relative);
+            var oldPath = path.dirname(docFile.relative);
+            var pathParts = oldPath.split(path.sep).filter(function (part) {
+                return part != 'docs';
+            });
+            var newPath = path.join(docPath, pathParts.join(path.sep));
+            shell.mkdir('-p', newPath);
+            
+            var newFile = path.join(newPath, file);
+            fs.writeFileSync(newFile, docFile.contents, encoding);
+            this.push(new gutil.File({
+                path: newFile,
+                contents: docFile.contents
+            }));
+            done();
+        });
+}
+
+function packageTask(pkgPath) {
     return through.obj(
 		function(taskJson, encoding, done) {
 		    if (!fs.existsSync(taskJson)) {
@@ -191,6 +220,7 @@ function packageTask(pkgPath){
                 shell.rm(path.join(tgtPath, '*.csproj'));
                 shell.rm(path.join(tgtPath, '*.md'));
                 shell.rm(path.join(tgtPath, '*.ts'));
+                shell.rm('-Rf', path.join(tgtPath, 'docs'));
 
                 // Build a list of external task lib dependencies.
                 var externals = require('./externals.json');
@@ -243,4 +273,5 @@ function packageTask(pkgPath){
 		});    
 }
 
+exports.PackageDocs = packageDocs;
 exports.PackageTask = packageTask;

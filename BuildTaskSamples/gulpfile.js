@@ -27,6 +27,7 @@ var _initFile = path.join(__dirname, 'init.done');
 var _tempPath = path.join(__dirname, '_temp');
 var _buildRoot = path.join(__dirname, '_build');
 var _buildTaskRoot = path.join(_buildRoot, 'Tasks');
+var _buildDocsRoot = path.join(_buildRoot, 'Docs');
 
 gulp.task('cleanTypeDefs', function() {
     return del(['typings']);
@@ -35,7 +36,8 @@ gulp.task('cleanTypeDefs', function() {
 gulp.task('clean', function() {
     return del([
         'Tasks/**/*.js',
-        _buildTaskRoot
+        _buildTaskRoot,
+        _buildDocsRoot
     ]);
 });
 
@@ -88,6 +90,11 @@ gulp.task('compileTasks', ['clean', 'init'], function() {
 });
 
 gulp.task('compile', ['compileTasks']);
+
+gulp.task('layoutDocs', function() {
+    return gulp.src(path.join(__dirname, 'Tasks', '**/*.md'))
+        .pipe(pkgm.PackageDocs(_buildDocsRoot));
+});
 
 gulp.task('build', ['compileTasks'], function(cb) {
     // Layout the tasks.
