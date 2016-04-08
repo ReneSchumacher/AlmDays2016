@@ -116,7 +116,7 @@ var mergeTypeDefs = function(file, cb) {
     } else {
         gutil.log('Merging ' + path.basename(file.path) + ' into typings/main.d.ts');
         // Replace backslashes by regular slashes - cannot use regex, since the backslash in the path is not escaped!
-        fs.appendFile('typings/main.d.ts', '/// <reference path="main/' + file.relative.toString().replace(String.fromCharCode(92), '/') + '" />', (err) => {
+        fs.appendFile('typings/main.d.ts', '/// <reference path="main/' + file.relative.toString().replace(String.fromCharCode(92), '/') + '" />', function(err) {
             cb(err, file);
         });
     }
