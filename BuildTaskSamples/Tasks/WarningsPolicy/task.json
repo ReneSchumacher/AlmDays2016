@@ -4,7 +4,7 @@
   "friendlyName": "Build Warnings Policy",
   "description": "Breaks a build based on the overall number or trend of warnings.",
   "author": "Microsoft PSfD Germany",
-  "helpMarkDown": "[More information]()",
+  "helpMarkDown": "[More information](https://github.com/ReneSchumacher/PSfDSampleDocs/blob/master/WarningsPolicy/en-US/WarningsPolicy.md)",
   "category": "Build",
   "visibility": [
     "Build",

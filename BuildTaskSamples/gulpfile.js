@@ -92,7 +92,7 @@ gulp.task('compileTasks', ['clean', 'init'], function() {
 gulp.task('compile', ['compileTasks']);
 
 gulp.task('layoutDocs', function() {
-    return gulp.src(path.join(__dirname, 'Tasks', '**/*.md'))
+    return gulp.src([path.join(__dirname, 'Tasks', '**/*.md'), path.join(__dirname, 'Tasks', '**/docs', 'assets/*')])
         .pipe(pkgm.PackageDocs(_buildDocsRoot));
 });
 

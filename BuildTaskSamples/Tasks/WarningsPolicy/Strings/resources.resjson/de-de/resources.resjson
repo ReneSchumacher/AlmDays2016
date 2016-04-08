@@ -1,6 +1,6 @@
 {
   "loc.friendlyName": "Build Warnings Policy",
-  "loc.helpMarkDown": "[Mehr Informationnen]()",
+  "loc.helpMarkDown": "[Mehr Informationnen](https://github.com/ReneSchumacher/PSfDSampleDocs/blob/master/WarningsPolicy/de-de/WarningsPolicy.md)",
   "loc.description": "Bricht den Build auf Basis der Anzahl der Warnungen ab.",
   "loc.instanceNameFormat": "Build Warnings Policy",
   "loc.group.displayName.advanced": "Erweitert",
