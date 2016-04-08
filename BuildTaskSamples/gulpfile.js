@@ -96,7 +96,7 @@ gulp.task('layoutDocs', function() {
         .pipe(pkgm.PackageDocs(_buildDocsRoot));
 });
 
-gulp.task('build', ['compileTasks'], function(cb) {
+gulp.task('build', ['compileTasks', 'layoutDocs'], function(cb) {
     // Layout the tasks.
     shell.mkdir('-p', _buildTaskRoot);
     return gulp.src(path.join(__dirname, 'Tasks', '**/task.json'))
